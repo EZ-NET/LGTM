@@ -24,6 +24,14 @@ class ViewController: NSViewController {
             syncUI()
         }
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textField.preferredMaxLayoutWidth = 270
+        syncUI()
+        configureEventMonitor()
+    }
+}
+extension ViewController {
     private func syncUI() {
         textField.stringValue = lgtm.description
         textField.selectText(nil)
@@ -32,11 +40,8 @@ class ViewController: NSViewController {
             imageView.image = NSImage(contentsOfURL: nsurl)
         }
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        textField.preferredMaxLayoutWidth = 270
-        syncUI()
-        monitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask) {[unowned self] e in
+    private func configureEventMonitor() {
+         monitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask) {[unowned self] e in
             guard !self.loading else { return e }
             let str:String = e.characters ?? ""
             print(e.keyCode)
@@ -62,10 +67,8 @@ class ViewController: NSViewController {
                 break
             }
             return e
-        }
+        }       
     }
-}
-extension ViewController {
     private func copyAction() {
         let gp = NSPasteboard.generalPasteboard()
         gp.declareTypes([NSStringPboardType], owner: nil)
