@@ -13,8 +13,13 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var textField: NSTextField!
     @IBOutlet weak var imageView: NSImageView!
+    var loading = false {
+        didSet {
+            //show/hide HUD
+        }
+    }
     var monitor: AnyObject!
-    var lgtm:Lgtm = Provider.sharedInstance.getRandomLgtm() {
+    var lgtm:Lgtm = Lgtm() {
         didSet {
             syncUI()
         }
@@ -32,6 +37,7 @@ class ViewController: NSViewController {
         textField.preferredMaxLayoutWidth = 270
         syncUI()
         monitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask) {[unowned self] e in
+            guard !self.loading else { return e }
             let str:String = e.characters ?? ""
             print(e.keyCode)
             switch (str, e.keyCode) {
@@ -40,14 +46,17 @@ class ViewController: NSViewController {
                     self.copyAction()
                 }
             case (" ", _):
-                let new = Provider.sharedInstance.getRandomLgtm()
-                if new != self.lgtm {
-                    self.lgtm = new
+                self.loading = true
+                Provider.sharedInstance.getRandomLgtm() { newlgtm, err in
+                    self.loading = false
+                    if newlgtm != self.lgtm {
+                        self.lgtm = newlgtm
+                    }
                 }
             case (_, 36):
                 if e.modifierFlags.contains(NSEventModifierFlags.CommandKeyMask) {
                     self.copyAction()
-                    // self.favoriteAction()
+                    self.favoriteAction()
                 }
             default:
                 break
@@ -67,6 +76,9 @@ extension ViewController {
             a.messageText = "Copied !"
             a.runModal()
         }
+    }
+    private func favoriteAction() {
+//        lgtm.saveToRealm()
     }
 }
 

@@ -13,10 +13,10 @@
 		1F4B6F0E1B8DC8070042CC59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4B6F0C1B8DC8070042CC59 /* Main.storyboard */; };
 		1F4B6F191B8DC8070042CC59 /* LGTMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B6F181B8DC8070042CC59 /* LGTMTests.swift */; };
 		1F4B6F241B8DC8070042CC59 /* LGTMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B6F231B8DC8070042CC59 /* LGTMUITests.swift */; };
-		1F4C80A91B8DD36300A4CC35 /* LgtmApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C80A81B8DD36300A4CC35 /* LgtmApplication.swift */; settings = {ASSET_TAGS = (); }; };
 		1F4C80AB1B8DD53100A4CC35 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C80AA1B8DD53100A4CC35 /* View.swift */; settings = {ASSET_TAGS = (); }; };
 		1F4C80AD1B8DE00700A4CC35 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C80AC1B8DE00700A4CC35 /* Provider.swift */; settings = {ASSET_TAGS = (); }; };
 		1FFD89F81B8DE71D00CBF98C /* Async.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFD89F51B8DE67700CBF98C /* Async.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1FFD89FD1B8DF8F600CBF98C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFD89FA1B8DF78D00CBF98C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1FFD89F81B8DE71D00CBF98C /* Async.framework in Embed Frameworks */,
+				1FFD89FD1B8DF8F600CBF98C /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,10 +64,10 @@
 		1F4B6F1F1B8DC8070042CC59 /* LGTMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LGTMUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F4B6F231B8DC8070042CC59 /* LGTMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGTMUITests.swift; sourceTree = "<group>"; };
 		1F4B6F251B8DC8070042CC59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F4C80A81B8DD36300A4CC35 /* LgtmApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LgtmApplication.swift; sourceTree = "<group>"; };
 		1F4C80AA1B8DD53100A4CC35 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		1F4C80AC1B8DE00700A4CC35 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		1FFD89F51B8DE67700CBF98C /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = Carthage/Build/Mac/Async.framework; sourceTree = SOURCE_ROOT; };
+		1FFD89FA1B8DF78D00CBF98C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +125,7 @@
 				1F4B6F0A1B8DC8070042CC59 /* Assets.xcassets */,
 				1F4B6F0C1B8DC8070042CC59 /* Main.storyboard */,
 				1F4B6F0F1B8DC8070042CC59 /* Info.plist */,
-				1F4C80A81B8DD36300A4CC35 /* LgtmApplication.swift */,
+				1FFD89FA1B8DF78D00CBF98C /* Alamofire.framework */,
 				1FFD89F51B8DE67700CBF98C /* Async.framework */,
 			);
 			path = LGTM;
@@ -282,7 +283,6 @@
 				1F4C80AD1B8DE00700A4CC35 /* Provider.swift in Sources */,
 				1F4B6F091B8DC8070042CC59 /* ViewController.swift in Sources */,
 				1F4B6F071B8DC8070042CC59 /* AppDelegate.swift in Sources */,
-				1F4C80A91B8DD36300A4CC35 /* LgtmApplication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

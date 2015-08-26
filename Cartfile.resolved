@@ -1,1 +1,3 @@
+github "Alamofire/Alamofire" "0fd77fec2a33e237ab99069c36410eb7101126c6"
 github "duemunk/Async" "abe23c18d8d3a708a325b5db10231388e1ca5b88"
+github "realm/realm-cocoa" "ec6215c11c5d42389a105e84017397d3a8c8f6a7"

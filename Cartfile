@@ -1,1 +1,3 @@
 github "duemunk/Async" "feature/Swift_2.0"
+github "Alamofire/Alamofire" "swift-2.0"
+github "realm/realm-cocoa" "swift-2.0"
