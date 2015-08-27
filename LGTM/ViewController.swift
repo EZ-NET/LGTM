@@ -19,7 +19,7 @@ class ViewController: NSViewController {
         }
     }
     var monitor: AnyObject!
-    var lgtm:Lgtm = Lgtm() {
+    var lgtm:Lgtm? {
         didSet {
             syncUI()
         }
@@ -33,11 +33,10 @@ class ViewController: NSViewController {
 }
 extension ViewController {
     private func syncUI() {
-        textField.stringValue = lgtm.description
-        textField.selectText(nil)
-        let nsurl = NSURL(string: lgtm.url)
-        if let nsurl = nsurl {
-            imageView.image = NSImage(contentsOfURL: nsurl)
+        if let lgtm = lgtm {
+            textField.stringValue = lgtm.markdown("LGTM")
+            textField.selectText(nil)
+            imageView.image = lgtm.image
         }
     }
     private func configureEventMonitor() {
@@ -51,12 +50,8 @@ extension ViewController {
                     self.copyAction()
                 }
             case (" ", _):
-                self.loading = true
-                Provider.sharedInstance.getRandomLgtm() { newlgtm, err in
-                    self.loading = false
-                    if newlgtm != self.lgtm {
-                        self.lgtm = newlgtm
-                    }
+                if let newlgtm = Provider.getRandomLgtm() where newlgtm != self.lgtm {
+                    self.lgtm = newlgtm
                 }
             case (_, 36):
                 if e.modifierFlags.contains(NSEventModifierFlags.CommandKeyMask) {
@@ -74,7 +69,7 @@ extension ViewController {
         gp.declareTypes([NSStringPboardType], owner: nil)
         _ = gp.clearContents()
         self.textField.selectText(nil)
-        if gp.writeObjects([self.lgtm.description]) {
+        if gp.writeObjects([self.textField.stringValue]) {
             let a = NSAlert()
             a.messageText = "Copied !"
             a.runModal()
