@@ -137,7 +137,7 @@ extension Provider {
             realm = try Realm()
         } catch {
             print(error)
-            print(Realm.defaultPath)
+            print(Realm.Configuration.defaultConfiguration.path)
             fatalError()
         }
         return realm
