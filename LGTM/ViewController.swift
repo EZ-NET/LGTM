@@ -13,11 +13,6 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var textField: NSTextField!
     @IBOutlet weak var imageView: NSImageView!
-    var loading = false {
-        didSet {
-            //show/hide HUD
-        }
-    }
     var monitor: AnyObject!
     var lgtm:Lgtm? {
         didSet {
@@ -41,7 +36,6 @@ extension ViewController {
     }
     private func configureEventMonitor() {
          monitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask) {[unowned self] e in
-            guard !self.loading else { return e }
             let str:String = e.characters ?? ""
             print(e.keyCode)
             switch (str, e.keyCode) {
@@ -70,13 +64,12 @@ extension ViewController {
         _ = gp.clearContents()
         self.textField.selectText(nil)
         if gp.writeObjects([self.textField.stringValue]) {
-            let a = NSAlert()
-            a.messageText = "Copied !"
-            a.runModal()
         }
     }
     private func favoriteAction() {
-//        lgtm.saveToRealm()
+        if let lgtm = lgtm {
+            Provider.favLgtm(lgtm)
+        }
     }
 }
 

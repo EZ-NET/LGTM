@@ -31,14 +31,6 @@ extension Provider {
         sharedInstance.fetchLgtmFromServer()
     }
 }
-/// interact with Realm
-extension Provider {
-    private func getLgtmFromRealm() -> [Lgtm] {
-        return []
-    }
-    private func saveToRealm(lgtm:Lgtm) {
-    }
-}
 /// private interfaces
 extension Provider {
     private func getRandomLgtm() -> Lgtm? {
@@ -87,22 +79,42 @@ extension Provider {
 }
 
 
-//import Realm
-//import RealmSwift
-//class RealmLgtm {
-//    dynamic var url:String
-//}
-//extension Lgtm {
-//    func saveToRealm() {
-//        let realm = try! Realm()
-//        realm.write {
-//            realm.add(RealmLgtm(self))
-//        }
-//    }
-//}
+import Realm
+import RealmSwift
+/// interact with Realm
+extension Provider {
+    private func getLgtmFromRealm() -> [Lgtm] {
+        return []
+    }
+    private func saveToRealm(lgtm:Lgtm) {
+        let data = RealmLgtm(lgtm: lgtm)
+        let realm:Realm
+        do {
+            realm = try Realm()
+        } catch {
+            print(Realm.defaultPath)
+            return
+        }
+        realm.write {
+            realm.add(data, update: true)
+        }
+    }
+}
+class RealmLgtm : Object {
+    dynamic var url:String = ""
+    convenience init(lgtm:Lgtm) {
+        self.init()
+        self.url = lgtm.url
+    }
+    required init() {
+        super.init()
+    }
+    override class func primaryKey() -> String? {
+        return "url"
+    }
+}
 struct Lgtm {
     let url:String
-    var cachePath:String = ""
     let tags:[String]
     var image:NSImage
     init(url:String, image:NSImage, tags:[String] = []) {
