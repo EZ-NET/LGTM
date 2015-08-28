@@ -7,15 +7,14 @@
 //
 import Alamofire
 import AppKit
+import Async
 
 class Provider {
     var fetching = false
     static let sharedInstance:Provider = Provider()
     var stackLimit = 20
     var stack:[Lgtm] = []
-    init() {
-        stack.appendContentsOf(getLgtmFromRealm())
-    }
+    var favStack:[Lgtm] = []
 }
 /// static method interfaces
 extension Provider {
@@ -29,6 +28,9 @@ extension Provider {
         guard !sharedInstance.fetching else { return }
         sharedInstance.fetching = true
         sharedInstance.fetchLgtmFromServer()
+    }
+    class func getFavoriteLgtms() -> [Lgtm] {
+        return sharedInstance.getFavoriteLgtms()
     }
 }
 /// private interfaces
@@ -49,30 +51,37 @@ extension Provider {
             }
         }
     }
-    private func fetchFromServer(complete:()->()) {
+    typealias FetchComplete = ()->()
+    private func fetchFromServer(complete:FetchComplete) {
         let headers = ["Accept":"application/json"]
         Alamofire.request(.GET, "http://www.lgtm.in/g", headers:headers).validate().responseJSON {req, res, result in
             switch result {
             case .Success:
             if let json = result.value, url = json["actualImageUrl"] as? String {
-                Alamofire.request(.GET, url).validate(contentType: ["image/*"])
-                    .responseData
-                { req, res, result in
-                    switch result {
-                    case .Success(let value):
-                    if let image = NSImage(data: value) {
-                        let lgtm = Lgtm(url: url, image:image)
-                        self.stack.append(lgtm)
-                        complete()
-                    }
-                    case .Failure(_, let error):
-                        print(error)
-                    }
+                self.fetchImage(url) { image in
+                    let lgtm = Lgtm(url: url, image:image)
+                    self.stack.append(lgtm)
+                    complete()
                 }
             }
             case .Failure(_, let error):
                 print(error)
                 break
+            }
+        }
+    }
+    typealias FetchImageComplete = NSImage->()
+    private func fetchImage(url:String, complete:FetchImageComplete) {
+        Alamofire.request(.GET, url).validate(contentType: ["image/*"])
+            .responseData
+        { req, res, result in
+            switch result {
+            case .Success(let value):
+            if let image = NSImage(data: value) {
+                complete(image)
+            }
+            case .Failure(_, let error):
+                print(error)
             }
         }
     }
@@ -83,21 +92,42 @@ import Realm
 import RealmSwift
 /// interact with Realm
 extension Provider {
-    private func getLgtmFromRealm() -> [Lgtm] {
-        return []
+    func getFavoriteLgtms() -> [Lgtm] {
+        return favStack
+    }
+    private func fetchFromRealm() {
+        let realm = getRealm()
+        let urls = realm.objects(RealmLgtm).map{$0 as RealmLgtm}.map {$0.url}
+        let targetUrls:[String]
+        if urls.count > stackLimit {
+            targetUrls = [] + urls[0...(stackLimit - 1)]
+        } else {
+            targetUrls = urls
+        }
+        for url in targetUrls {
+            fetchImage(url) { [unowned self] image in
+                let lgtm = Lgtm(url: url, image:image)
+                self.favStack.append(lgtm)
+            }
+        }
     }
     private func saveToRealm(lgtm:Lgtm) {
         let data = RealmLgtm(lgtm: lgtm)
+        let realm = getRealm()
+        realm.write {
+            realm.add(data, update: true)
+        }
+    }
+    private func getRealm() -> Realm {
         let realm:Realm
         do {
             realm = try Realm()
         } catch {
+            print(error)
             print(Realm.defaultPath)
-            return
+            fatalError()
         }
-        realm.write {
-            realm.add(data, update: true)
-        }
+        return realm
     }
 }
 class RealmLgtm : Object {
