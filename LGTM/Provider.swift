@@ -11,6 +11,7 @@ import Async
 
 class Provider {
     var fetching = false
+    var fetchingRealm = false
     static let sharedInstance:Provider = Provider()
     var stackLimit = 20
     var stack:[Lgtm] = []
@@ -24,13 +25,18 @@ extension Provider {
     class func popRandomLgtm() -> Lgtm? {
         return sharedInstance.popRandomLgtm()
     }
+    class func popFavoriteLgtm() -> Lgtm? {
+        return sharedInstance.popFavoriteLgtm()
+    }
     class func fetchLgtmFromServer() {
         guard !sharedInstance.fetching else { return }
         sharedInstance.fetching = true
         sharedInstance.fetchLgtmFromServer()
     }
-    class func popFavoriteLgtm() -> Lgtm? {
-        return sharedInstance.popFavoriteLgtm()
+    class func fetchLgtmFromRealm() {
+        guard !sharedInstance.fetchingRealm else { return }
+        sharedInstance.fetchingRealm = true
+        sharedInstance.fetchFromRealm()
     }
 }
 /// private interfaces
@@ -88,7 +94,6 @@ extension Provider {
 }
 
 
-import Realm
 import RealmSwift
 /// interact with Realm
 extension Provider {
@@ -99,7 +104,8 @@ extension Provider {
     }
     private func fetchFromRealm() {
         let realm = getRealm()
-        let urls = realm.objects(RealmLgtm).map{$0 as RealmLgtm}.map {$0.url}
+        let results = realm.objects(RealmLgtm).filter {e in true} as [RealmLgtm]
+        let urls = results.map{$0.url}
         let targetUrls:[String]
         if urls.count > stackLimit {
             targetUrls = [] + urls[0...(stackLimit - 1)]
@@ -110,6 +116,9 @@ extension Provider {
             fetchImage(url) { [unowned self] image in
                 let lgtm = Lgtm(url: url, image:image)
                 self.favStack.append(lgtm)
+                if self.favStack.count >= self.stackLimit {
+                    self.fetchingRealm = false
+                }
             }
         }
     }
@@ -120,6 +129,8 @@ extension Provider {
             realm.add(data, update: true)
         }
     }
+}
+extension Provider {
     private func getRealm() -> Realm {
         let realm:Realm
         do {
@@ -137,9 +148,6 @@ class RealmLgtm : Object {
     convenience init(lgtm:Lgtm) {
         self.init()
         self.url = lgtm.url
-    }
-    required init() {
-        super.init()
     }
     override class func primaryKey() -> String? {
         return "url"
