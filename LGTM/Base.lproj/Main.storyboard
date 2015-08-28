@@ -677,14 +677,14 @@
             <objects>
                 <viewController title="lgtm.in" id="XfG-lQ-9wD" customClass="ViewController" customModule="LGTM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl" customClass="View" customModule="LGTM" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="249"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="NFI-N8-eRb">
-                                <rect key="frame" x="10" y="10" width="460" height="229"/>
+                                <rect key="frame" x="10" y="10" width="460" height="330"/>
                                 <beginningViews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4K-0t-kas">
-                                        <rect key="frame" x="-3" y="52" width="466" height="180"/>
+                                        <rect key="frame" x="-3" y="52" width="466" height="281"/>
                                         <imageCell key="cell" selectable="YES" editable="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" imageFrameStyle="groove" id="HzA-iA-j3O"/>
                                     </imageView>
                                     <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4W9-xs-PYF">
@@ -762,21 +762,21 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="644.5"/>
+            <point key="canvasLocation" x="75" y="691"/>
         </scene>
         <!--favorites-->
         <scene sceneID="uRD-tA-voo">
             <objects>
                 <viewController title="favorites" id="oik-qd-hcl" customClass="ViewController" customModule="LGTM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="L6L-IP-b6X" customClass="View" customModule="LGTM" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="249"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Wgh-Q3-Tnc">
-                                <rect key="frame" x="10" y="10" width="460" height="229"/>
+                                <rect key="frame" x="10" y="10" width="460" height="330"/>
                                 <beginningViews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZb-qs-ZHk">
-                                        <rect key="frame" x="-3" y="52" width="466" height="180"/>
+                                        <rect key="frame" x="-3" y="52" width="466" height="281"/>
                                         <imageCell key="cell" selectable="YES" editable="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" imageFrameStyle="groove" id="7EA-lU-RPO"/>
                                     </imageView>
                                     <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iae-8v-eCv">
@@ -854,7 +854,7 @@
                 </viewController>
                 <customObject id="wxz-7O-IxN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="560" y="638.5"/>
+            <point key="canvasLocation" x="560" y="683"/>
         </scene>
     </scenes>
 </document>
