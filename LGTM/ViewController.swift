@@ -8,6 +8,10 @@
 
 import Cocoa
 import Async
+enum ViewControllerType:String {
+    case Lgtmin = "lgtm.in"
+    case Favorites = "favorites"
+}
 
 class ViewController: NSViewController {
 
@@ -19,11 +23,14 @@ class ViewController: NSViewController {
             syncUI()
         }
     }
+    var type:ViewControllerType!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.title)
         textField.preferredMaxLayoutWidth = 270
         syncUI()
         configureEventMonitor()
+        type = ViewControllerType(rawValue: self.title!)
     }
 }
 extension ViewController {
@@ -32,6 +39,13 @@ extension ViewController {
             textField.stringValue = lgtm.markdown("LGTM")
             textField.selectText(nil)
             imageView.image = lgtm.image
+            switch type! {
+            case .Lgtmin:
+                break
+            case .Favorites:
+                break
+//                favButton.hidden = true
+            }
         }
     }
     private func configureEventMonitor() {
@@ -44,7 +58,7 @@ extension ViewController {
                     self.copyAction()
                 }
             case (" ", _):
-                if let newlgtm = Provider.getRandomLgtm() where newlgtm != self.lgtm {
+                if let newlgtm = self.getLgtm() where newlgtm != self.lgtm {
                     self.lgtm = newlgtm
                 }
             case (_, 36):
@@ -71,5 +85,12 @@ extension ViewController {
             Provider.favLgtm(lgtm)
         }
     }
+    private func getLgtm() -> Lgtm? {
+        switch type! {
+        case .Lgtmin:
+            return Provider.popRandomLgtm()
+        case .Favorites:
+            return Provider.popFavoriteLgtm()
+        }
+    }
 }
-

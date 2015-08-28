@@ -21,21 +21,21 @@ extension Provider {
     class func favLgtm(lgtm:Lgtm) {
         sharedInstance.saveToRealm(lgtm)
     }
-    class func getRandomLgtm() -> Lgtm? {
-        return sharedInstance.getRandomLgtm()
+    class func popRandomLgtm() -> Lgtm? {
+        return sharedInstance.popRandomLgtm()
     }
     class func fetchLgtmFromServer() {
         guard !sharedInstance.fetching else { return }
         sharedInstance.fetching = true
         sharedInstance.fetchLgtmFromServer()
     }
-    class func getFavoriteLgtms() -> [Lgtm] {
-        return sharedInstance.getFavoriteLgtms()
+    class func popFavoriteLgtm() -> Lgtm? {
+        return sharedInstance.popFavoriteLgtm()
     }
 }
 /// private interfaces
 extension Provider {
-    private func getRandomLgtm() -> Lgtm? {
+    private func popRandomLgtm() -> Lgtm? {
         let lgtm = stack.popLast()
         fetchLgtmFromServer()
         return lgtm
@@ -92,8 +92,10 @@ import Realm
 import RealmSwift
 /// interact with Realm
 extension Provider {
-    func getFavoriteLgtms() -> [Lgtm] {
-        return favStack
+    private func popFavoriteLgtm() -> Lgtm? {
+        let lgtm = favStack.popLast()
+        fetchFromRealm()
+        return lgtm
     }
     private func fetchFromRealm() {
         let realm = getRealm()

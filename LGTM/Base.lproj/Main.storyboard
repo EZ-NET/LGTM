@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="pd1-TN-stl">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8187.4"/>
     </dependencies>
@@ -649,28 +649,33 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller-->
-        <scene sceneID="R2V-B0-nI4">
+        <!--Tab View Controller-->
+        <scene sceneID="gWc-iK-aPz">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="LGTM" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                    </window>
+                <tabViewController selectedTabViewItemIndex="0" id="pd1-TN-stl" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem id="dI1-Ay-Bq0"/>
+                        <tabViewItem id="zjq-rd-5MV"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="9nC-X3-KXW">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <tabViewItems/>
+                    </tabView>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="tabItems" id="0tp-ka-uti"/>
+                        <segue destination="oik-qd-hcl" kind="relationship" relationship="tabItems" id="fbc-7a-wcL"/>
                     </connections>
-                </windowController>
-                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                </tabViewController>
+                <customObject id="Bun-9W-cfG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="164" y="236"/>
         </scene>
-        <!--View Controller-->
+        <!--lgtm.in-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="LGTM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="lgtm.in" id="XfG-lQ-9wD" customClass="ViewController" customModule="LGTM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl" customClass="View" customModule="LGTM" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="249"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -758,6 +763,98 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="644.5"/>
+        </scene>
+        <!--favorites-->
+        <scene sceneID="uRD-tA-voo">
+            <objects>
+                <viewController title="favorites" id="oik-qd-hcl" customClass="ViewController" customModule="LGTM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="L6L-IP-b6X" customClass="View" customModule="LGTM" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="249"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Wgh-Q3-Tnc">
+                                <rect key="frame" x="10" y="10" width="460" height="229"/>
+                                <beginningViews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZb-qs-ZHk">
+                                        <rect key="frame" x="-3" y="52" width="466" height="180"/>
+                                        <imageCell key="cell" selectable="YES" editable="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" imageFrameStyle="groove" id="7EA-lU-RPO"/>
+                                    </imageView>
+                                    <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iae-8v-eCv">
+                                        <rect key="frame" x="78" y="25" width="304" height="22"/>
+                                        <beginningViews>
+                                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GEA-jV-TiH">
+                                                <rect key="frame" x="0.0" y="0.0" width="32" height="22"/>
+                                                <textFieldCell key="cell" selectable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="text" drawsBackground="YES" usesSingleLineMode="YES" id="lBM-a0-bxj">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <allowedInputSourceLocales>
+                                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                    </allowedInputSourceLocales>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l9N-5c-VyN">
+                                                <rect key="frame" x="34" y="-6" width="167" height="32"/>
+                                                <buttonCell key="cell" type="push" title="love this ! [⌘+ enter]" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lzd-Xn-gWl">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H9X-SL-g76">
+                                                <rect key="frame" x="197" y="-6" width="113" height="32"/>
+                                                <buttonCell key="cell" type="push" title="copy [⌘+C]" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ro2-Zn-XQw">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                        </beginningViews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vXy-Ye-B8o">
+                                        <rect key="frame" x="153" y="0.0" width="155" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hit space key to refresh." id="nLk-SE-4wi">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </beginningViews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Wgh-Q3-Tnc" firstAttribute="top" secondItem="L6L-IP-b6X" secondAttribute="top" constant="10" id="8Cq-LW-p2Z"/>
+                            <constraint firstAttribute="trailing" secondItem="Wgh-Q3-Tnc" secondAttribute="trailing" constant="10" id="KpF-gK-iuF"/>
+                            <constraint firstAttribute="bottom" secondItem="Wgh-Q3-Tnc" secondAttribute="bottom" constant="10" id="XNx-6X-tJg"/>
+                            <constraint firstItem="Wgh-Q3-Tnc" firstAttribute="leading" secondItem="L6L-IP-b6X" secondAttribute="leading" constant="10" id="gwn-8r-JXJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="lZb-qs-ZHk" id="gNO-03-Oov"/>
+                        <outlet property="textField" destination="GEA-jV-TiH" id="tYR-Ia-d0E"/>
+                    </connections>
+                </viewController>
+                <customObject id="wxz-7O-IxN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="560" y="638.5"/>
         </scene>
     </scenes>
 </document>
