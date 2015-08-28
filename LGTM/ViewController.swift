@@ -15,22 +15,35 @@ enum ViewControllerType:String {
 
 class ViewController: NSViewController {
 
+    @IBOutlet weak var copyButton: NSButton!
+    @IBOutlet weak var loveButton: NSButton!
     @IBOutlet weak var textField: NSTextField!
     @IBOutlet weak var imageView: NSImageView!
-    var monitor: AnyObject!
-    var lgtm:Lgtm? {
+    private var monitor: AnyObject!
+    private var lgtm:Lgtm? {
         didSet {
             syncUI()
         }
     }
-    var type:ViewControllerType!
+    internal var type:ViewControllerType!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.title)
         textField.preferredMaxLayoutWidth = 270
+        imageView.animates = true
+        imageView.imageScaling = NSImageScaling.ScaleProportionallyUpOrDown
+        imageView.canDrawSubviewsIntoLayer = true
         syncUI()
         configureEventMonitor()
         type = ViewControllerType(rawValue: self.title!)
+        copyButton.action = "copyAction"
+        copyButton.target = self
+        switch type! {
+        case .Lgtmin:
+            loveButton.action = "favoriteAction"
+            loveButton.target = self
+        case .Favorites:
+            break
+        }
     }
 }
 extension ViewController {
@@ -43,28 +56,28 @@ extension ViewController {
             case .Lgtmin:
                 break
             case .Favorites:
+//                loveButton.hidden = true
                 break
-//                favButton.hidden = true
             }
         }
     }
     private func configureEventMonitor() {
-         monitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask) {[unowned self] e in
+        monitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask) {[unowned self] e in
             let str:String = e.characters ?? ""
-            print(e.keyCode)
             switch (str, e.keyCode) {
             case ("c", _):
                 if e.modifierFlags.contains(NSEventModifierFlags.CommandKeyMask) {
-                    self.copyAction()
+                    self.copyButton.performClick(self.copyButton)
                 }
             case (" ", _):
                 if let newlgtm = self.getLgtm() where newlgtm != self.lgtm {
                     self.lgtm = newlgtm
                 }
-            case (_, 36):
+            case ("s", _):
                 if e.modifierFlags.contains(NSEventModifierFlags.CommandKeyMask) {
-                    self.copyAction()
-                    self.favoriteAction()
+                    if self.type == .Lgtmin {
+                        self.loveButton.performClick(self.loveButton)
+                    }
                 }
             default:
                 break
@@ -72,7 +85,7 @@ extension ViewController {
             return e
         }       
     }
-    private func copyAction() {
+    internal func copyAction() {
         let gp = NSPasteboard.generalPasteboard()
         gp.declareTypes([NSStringPboardType], owner: nil)
         _ = gp.clearContents()
@@ -80,7 +93,8 @@ extension ViewController {
         if gp.writeObjects([self.textField.stringValue]) {
         }
     }
-    private func favoriteAction() {
+    internal func favoriteAction() {
+        copyAction()
         if let lgtm = lgtm {
             Provider.favLgtm(lgtm)
         }

@@ -10,12 +10,13 @@ import AppKit
 import Async
 
 class Provider {
-    var fetching = false
-    var fetchingRealm = false
-    static let sharedInstance:Provider = Provider()
-    var stackLimit = 20
-    var stack:[Lgtm] = []
-    var favStack:[Lgtm] = []
+    private var fetching = false
+    private var fetchingRealm = false
+    private static let sharedInstance:Provider = Provider()
+    private var stackLimit = 20
+    private var stack:[Lgtm] = []
+    private var favStack:[Lgtm] = []
+    private var history:[String] = []
 }
 /// static method interfaces
 extension Provider {
@@ -43,6 +44,12 @@ extension Provider {
 extension Provider {
     private func popRandomLgtm() -> Lgtm? {
         let lgtm = stack.popLast()
+        if let lgtm = lgtm {
+            if history.count >= 200 {
+                history.popLast()
+            }
+            history.append(lgtm.url)
+        }
         fetchLgtmFromServer()
         return lgtm
     }
@@ -64,6 +71,9 @@ extension Provider {
             switch result {
             case .Success:
             if let json = result.value, url = json["actualImageUrl"] as? String {
+                if self.history.contains(url) {
+                    return
+                }
                 self.fetchImage(url) { image in
                     let lgtm = Lgtm(url: url, image:image)
                     self.stack.append(lgtm)

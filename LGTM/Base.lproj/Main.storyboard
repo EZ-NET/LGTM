@@ -688,7 +688,7 @@
                                         <imageCell key="cell" selectable="YES" editable="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" imageFrameStyle="groove" id="HzA-iA-j3O"/>
                                     </imageView>
                                     <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4W9-xs-PYF">
-                                        <rect key="frame" x="78" y="25" width="304" height="22"/>
+                                        <rect key="frame" x="87.5" y="25" width="285" height="22"/>
                                         <beginningViews>
                                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mnI-Fk-xmk">
                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="22"/>
@@ -702,14 +702,14 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Soz-3m-9kz">
-                                                <rect key="frame" x="34" y="-6" width="167" height="32"/>
-                                                <buttonCell key="cell" type="push" title="love this ! [⌘+ enter]" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fi2-In-oIt">
+                                                <rect key="frame" x="34" y="-6.5" width="148" height="32"/>
+                                                <buttonCell key="cell" type="push" title="save this ! [⌘+ S]" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fi2-In-oIt">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </button>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ph-AK-Amw">
-                                                <rect key="frame" x="197" y="-6" width="113" height="32"/>
+                                                <rect key="frame" x="178" y="-6.5" width="113" height="32"/>
                                                 <buttonCell key="cell" type="push" title="copy [⌘+C]" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3tg-yK-CJY">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -728,7 +728,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gaF-4s-rVt">
-                                        <rect key="frame" x="153" y="0.0" width="155" height="17"/>
+                                        <rect key="frame" x="152.5" y="0.0" width="155" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hit space key to refresh." id="6uO-93-gF5">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -756,7 +756,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="copyButton" destination="7Ph-AK-Amw" id="dkH-Uq-acN"/>
                         <outlet property="imageView" destination="x4K-0t-kas" id="YH7-Lj-HYJ"/>
+                        <outlet property="loveButton" destination="Soz-3m-9kz" id="vdG-XH-ftr"/>
                         <outlet property="textField" destination="mnI-Fk-xmk" id="4Hw-dY-9gV"/>
                     </connections>
                 </viewController>
@@ -794,14 +796,14 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l9N-5c-VyN">
-                                                <rect key="frame" x="34" y="-6" width="167" height="32"/>
+                                                <rect key="frame" x="34" y="-6.5" width="167" height="32"/>
                                                 <buttonCell key="cell" type="push" title="love this ! [⌘+ enter]" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lzd-Xn-gWl">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </button>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H9X-SL-g76">
-                                                <rect key="frame" x="197" y="-6" width="113" height="32"/>
+                                                <rect key="frame" x="197" y="-6.5" width="113" height="32"/>
                                                 <buttonCell key="cell" type="push" title="copy [⌘+C]" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ro2-Zn-XQw">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -820,7 +822,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vXy-Ye-B8o">
-                                        <rect key="frame" x="153" y="0.0" width="155" height="17"/>
+                                        <rect key="frame" x="152.5" y="0.0" width="155" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hit space key to refresh." id="nLk-SE-4wi">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -848,6 +850,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="copyButton" destination="H9X-SL-g76" id="gns-7p-d0P"/>
                         <outlet property="imageView" destination="lZb-qs-ZHk" id="gNO-03-Oov"/>
                         <outlet property="textField" destination="GEA-jV-TiH" id="tYR-Ia-d0E"/>
                     </connections>
