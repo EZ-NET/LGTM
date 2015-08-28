@@ -12,6 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         Provider.fetchLgtmFromServer()
+        Provider.fetchLgtmFromRealm()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
