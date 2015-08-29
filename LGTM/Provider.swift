@@ -72,6 +72,7 @@ extension Provider {
             case .Success:
             if let json = result.value, url = json["actualImageUrl"] as? String {
                 if self.history.contains(url) {
+                    complete()
                     return
                 }
                 self.fetchImage(url) { image in
@@ -82,6 +83,7 @@ extension Provider {
             }
             case .Failure(_, let error):
                 print(error)
+                complete()
                 break
             }
         }
