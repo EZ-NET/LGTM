@@ -14,12 +14,14 @@ protocol QueueType {
     mutating func dequeue() -> Element?
 }
 /// FIFO Queue
-struct Queue<T>:QueueType {
+struct Queue<T:Equatable>:QueueType {
     typealias Element = T
     var queue:[Element]
     var reverse:[Element]
     mutating func enqueue(element:Element) {
-        queue.append(element)
+        if !self.contains(element) {
+            queue.append(element)
+        }
     }
     mutating func dequeue() -> Element? {
         if reverse.count == 0 {
