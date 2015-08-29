@@ -90,7 +90,6 @@ extension Provider {
             }
             case .Failure(_, let error):
                 print(error)
-                complete()
                 break
             }
         }
