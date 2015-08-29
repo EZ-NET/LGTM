@@ -90,8 +90,7 @@ extension ViewController {
         gp.declareTypes([NSStringPboardType], owner: nil)
         _ = gp.clearContents()
         self.textField.selectText(nil)
-        if gp.writeObjects([self.textField.stringValue]) {
-        }
+        if gp.writeObjects([self.textField.stringValue]) { }
     }
     internal func favoriteAction() {
         copyAction()
