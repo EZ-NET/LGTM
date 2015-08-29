@@ -10,7 +10,7 @@
 # This part is only relevant, if you want to submit a new binary
 # If you don't use fastlane (https://github.com/KrauseFx/fastlane)
 # you can set the path to your ipa file using:
-# ipa "./app.ipa"
+ipa "./LGTM.ipa"
 
 # to provide an ipa file for TestFlight distribution, use beta_ipa
 # beta_ipa "./app.ipa"
