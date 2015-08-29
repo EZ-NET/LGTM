@@ -6,8 +6,6 @@
 //  Copyright © 2015年 toshi0383. All rights reserved.
 //
 
-import Foundation
-
 protocol QueueType {
     typealias Element
     mutating func enqueue(element:Element)

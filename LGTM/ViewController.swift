@@ -6,7 +6,7 @@
 //  Copyright © 2015年 toshi0383. All rights reserved.
 //
 
-import Cocoa
+import AppKit
 import Async
 enum ViewControllerType:String {
     case Lgtmin = "lgtm.in"

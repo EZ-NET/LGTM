@@ -6,7 +6,6 @@
 //  Copyright © 2015年 toshi0383. All rights reserved.
 //
 
-import Foundation
 import Swift
 
 protocol WebFormatStringConvertible {
