@@ -68,6 +68,7 @@
 		1F4B6F251B8DC8070042CC59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F4C80AC1B8DE00700A4CC35 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		1FA05D141B9158BA008EDDC6 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		1FCE81D81B922CEE00FF8A79 /* LGTM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LGTM.entitlements; sourceTree = "<group>"; };
 		1FD3F1DA1B8F1B92008B286E /* String+WebFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+WebFormat.swift"; sourceTree = "<group>"; };
 		1FFD89F51B8DE67700CBF98C /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = Carthage/Build/Mac/Async.framework; sourceTree = SOURCE_ROOT; };
 		1FFD89FA1B8DF78D00CBF98C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = SOURCE_ROOT; };
@@ -127,6 +128,7 @@
 		1F4B6F051B8DC8070042CC59 /* LGTM */ = {
 			isa = PBXGroup;
 			children = (
+				1FCE81D81B922CEE00FF8A79 /* LGTM.entitlements */,
 				1F4B6F061B8DC8070042CC59 /* AppDelegate.swift */,
 				1F4B6F081B8DC8070042CC59 /* ViewController.swift */,
 				1FD3F1DA1B8F1B92008B286E /* String+WebFormat.swift */,
@@ -248,6 +250,11 @@
 					1F4B6F021B8DC8070042CC59 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = T47KPZ35V7;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					1F4B6F131B8DC8070042CC59 = {
 						CreatedOnToolsVersion = 7.0;
@@ -494,6 +501,7 @@
 			baseConfigurationReference = 523E5DF72EA9C14A62E1BB10 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LGTM/LGTM.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 11;
@@ -514,6 +522,7 @@
 			baseConfigurationReference = 9A8F5419BDAAAB9FBC4C98B6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LGTM/LGTM.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 11;
