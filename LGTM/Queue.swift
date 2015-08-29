@@ -31,12 +31,18 @@ struct Queue<T>:QueueType {
 }
 extension Queue: CollectionType {
     var startIndex: Int {return 0}
-    var endIndex: Int {return queue.count + reverse.count}
+    var endIndex: Int {
+        return count == 0 ? 0 : count - 1
+    }
+    var count: Int {
+        return queue.count + reverse.count
+    }
     subscript(position:Int) -> Element {
-        if position > queue.endIndex {
-            return reverse[position]
-        } else {
+        guard position <= endIndex else { fatalError("index out of bounds") }
+        if position <= queue.endIndex {
             return queue[position]
+        } else {
+            return reverse[position - queue.endIndex]
         }
     }
 }
