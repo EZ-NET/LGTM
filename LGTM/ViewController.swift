@@ -69,7 +69,7 @@ extension ViewController {
                 if e.modifierFlags.contains(NSEventModifierFlags.CommandKeyMask) {
                     self.copyButton.performClick(self.copyButton)
                 }
-            case (" ", _):
+            case (" ", 49):
                 if let newlgtm = self.getLgtm() where newlgtm != self.lgtm {
                     self.lgtm = newlgtm
                 }
