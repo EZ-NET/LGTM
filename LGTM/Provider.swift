@@ -82,6 +82,7 @@ extension Provider {
                     return
                 }
                 self.fetchImage(url) { image in
+                    image.cacheMode = NSImageCacheMode.Never
                     let lgtm = Lgtm(url: url, image:image)
                     self.stack.enqueue(lgtm)
                     complete()
