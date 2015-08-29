@@ -38,8 +38,8 @@ extension Queue: CollectionType {
         return queue.count + reverse.count
     }
     subscript(position:Int) -> Element {
-        guard position <= endIndex else { fatalError("index out of bounds") }
-        if position <= queue.endIndex {
+        guard position < endIndex else { fatalError("index out of bounds") }
+        if position < queue.endIndex {
             return queue[position]
         } else {
             return reverse[position - queue.endIndex]
