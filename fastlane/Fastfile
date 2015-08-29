@@ -61,7 +61,7 @@ platform :mac do
   desc "** Full Markdown** Support: `code`"
   lane :deploy do
 #    sigh
-    deliver(skip_deploy: true, force: true)
+#    deliver(skip_deploy: true, force: true)
     # frameit
   end
 
