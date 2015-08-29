@@ -13,7 +13,6 @@
 		1F4B6F0E1B8DC8070042CC59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4B6F0C1B8DC8070042CC59 /* Main.storyboard */; };
 		1F4B6F191B8DC8070042CC59 /* LGTMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B6F181B8DC8070042CC59 /* LGTMTests.swift */; };
 		1F4B6F241B8DC8070042CC59 /* LGTMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B6F231B8DC8070042CC59 /* LGTMUITests.swift */; };
-		1F4C80AB1B8DD53100A4CC35 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C80AA1B8DD53100A4CC35 /* View.swift */; settings = {ASSET_TAGS = (); }; };
 		1F4C80AD1B8DE00700A4CC35 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C80AC1B8DE00700A4CC35 /* Provider.swift */; settings = {ASSET_TAGS = (); }; };
 		1FA05D151B9158BA008EDDC6 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA05D141B9158BA008EDDC6 /* Queue.swift */; settings = {ASSET_TAGS = (); }; };
 		1FD3F1DB1B8F1B92008B286E /* String+WebFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3F1DA1B8F1B92008B286E /* String+WebFormat.swift */; settings = {ASSET_TAGS = (); }; };
@@ -67,7 +66,6 @@
 		1F4B6F1F1B8DC8070042CC59 /* LGTMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LGTMUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F4B6F231B8DC8070042CC59 /* LGTMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGTMUITests.swift; sourceTree = "<group>"; };
 		1F4B6F251B8DC8070042CC59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F4C80AA1B8DD53100A4CC35 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		1F4C80AC1B8DE00700A4CC35 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		1FA05D141B9158BA008EDDC6 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		1FD3F1DA1B8F1B92008B286E /* String+WebFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+WebFormat.swift"; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				1FD3F1DA1B8F1B92008B286E /* String+WebFormat.swift */,
 				1F4C80AC1B8DE00700A4CC35 /* Provider.swift */,
 				1FA05D141B9158BA008EDDC6 /* Queue.swift */,
-				1F4C80AA1B8DD53100A4CC35 /* View.swift */,
 				1F4B6F0A1B8DC8070042CC59 /* Assets.xcassets */,
 				1F4B6F0C1B8DC8070042CC59 /* Main.storyboard */,
 				1F4B6F0F1B8DC8070042CC59 /* Info.plist */,
@@ -363,7 +360,6 @@
 			files = (
 				1FD3F1DB1B8F1B92008B286E /* String+WebFormat.swift in Sources */,
 				1FA05D151B9158BA008EDDC6 /* Queue.swift in Sources */,
-				1F4C80AB1B8DD53100A4CC35 /* View.swift in Sources */,
 				1F4C80AD1B8DE00700A4CC35 /* Provider.swift in Sources */,
 				1F4B6F091B8DC8070042CC59 /* ViewController.swift in Sources */,
 				1F4B6F071B8DC8070042CC59 /* AppDelegate.swift in Sources */,
