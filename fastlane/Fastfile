@@ -19,10 +19,10 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.21.0"
 
-default_platform :osx
+default_platform :mac
 
 
-platform :osx do
+platform :mac do
 
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
