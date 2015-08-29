@@ -50,7 +50,13 @@ extension Provider {
             }
             history.enqueue(lgtm.url)
         }
-        fetchLgtmFromServer()
+        /// 2 different threads concurrently
+        Async.background {
+            self.fetchLgtmFromServer()
+        }
+        Async.background {
+            self.fetchLgtmFromServer()
+        }
         return lgtm
     }
     /// fetch from lgtm.in/g to limit
