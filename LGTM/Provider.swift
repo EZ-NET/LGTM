@@ -13,9 +13,10 @@ class Provider {
     private var fetching = false
     private var fetchingRealm = false
     private static let sharedInstance:Provider = Provider()
-    private var stackLimit = 20
+    private let StackLimit = 20
     private var stack:Queue<Lgtm> = []
     private var favStack:Queue<Lgtm> = []
+    private let HistoryLimit = 200
     private var history:Queue<String> = []
 }
 /// static method interfaces
@@ -45,7 +46,7 @@ extension Provider {
     private func popRandomLgtm() -> Lgtm? {
         let lgtm = stack.dequeue()
         if let lgtm = lgtm {
-            if history.count >= 200 {
+            if history.count >= HistoryLimit {
                 history.dequeue()
             }
             history.enqueue(lgtm.url)
@@ -62,7 +63,7 @@ extension Provider {
     /// fetch from lgtm.in/g to limit
     private func fetchLgtmFromServer() {
         fetchFromServer { [unowned self] in
-            if self.stack.count < self.stackLimit {
+            if self.stack.count < self.StackLimit {
                 // fetch until stack.count reaches to limit
                 self.fetchLgtmFromServer()
             } else {
@@ -125,8 +126,8 @@ extension Provider {
         let results = realm.objects(RealmLgtm).filter {e in true} as [RealmLgtm]
         let urls = results.map{$0.url}
         let targetUrls:[String]
-        if urls.count > stackLimit {
-            targetUrls = [] + urls[0...(stackLimit - 1)]
+        if urls.count > StackLimit {
+            targetUrls = [] + urls[0...(StackLimit - 1)]
         } else {
             targetUrls = urls
         }
@@ -134,7 +135,7 @@ extension Provider {
             fetchImage(url) { [unowned self] image in
                 let lgtm = Lgtm(url: url, image:image)
                 self.favStack.enqueue(lgtm)
-                if self.favStack.count >= self.stackLimit {
+                if self.favStack.count >= self.StackLimit {
                     self.fetchingRealm = false
                 }
             }
