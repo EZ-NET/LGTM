@@ -9,7 +9,7 @@
 import AppKit
 import Async
 enum ViewControllerType:String {
-    case Lgtmin = "lgtm.in"
+    case Lgtmin = "lgtmin"
     case Favorites = "favorites"
 }
 

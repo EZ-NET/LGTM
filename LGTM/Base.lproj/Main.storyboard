@@ -655,7 +655,7 @@
                 <tabViewController selectedTabViewItemIndex="0" id="pd1-TN-stl" customClass="TabViewController" customModule="LGTM" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem id="dI1-Ay-Bq0" userLabel="lgtm.in">
-                            <accessibility identifier="lgtm.in"/>
+                            <accessibility identifier="lgtmin"/>
                         </tabViewItem>
                         <tabViewItem id="zjq-rd-5MV" userLabel="favorites">
                             <accessibility identifier="favorites"/>
@@ -676,10 +676,10 @@
             </objects>
             <point key="canvasLocation" x="264" y="325"/>
         </scene>
-        <!--lgtm.in-->
+        <!--lgtmin-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="lgtm.in" id="XfG-lQ-9wD" customClass="ViewController" customModule="LGTM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="lgtmin" id="XfG-lQ-9wD" customClass="ViewController" customModule="LGTM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
