@@ -33,7 +33,6 @@ class ViewController: NSViewController {
         imageView.imageScaling = NSImageScaling.ScaleProportionallyUpOrDown
         imageView.canDrawSubviewsIntoLayer = true
         syncUI()
-        configureEventMonitor()
         type = ViewControllerType(rawValue: self.title!)
         copyButton.action = "copyAction"
         copyButton.target = self
@@ -44,6 +43,14 @@ class ViewController: NSViewController {
         case .Favorites:
             break
         }
+    }
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        NSEvent.removeMonitor(monitor)
+    }
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        configureEventMonitor()
     }
 }
 extension ViewController {
