@@ -28,11 +28,15 @@ class ViewController: NSViewController {
     internal var type:ViewControllerType!
     override func viewDidLoad() {
         super.viewDidLoad()
+        /// textField
         textField.preferredMaxLayoutWidth = 270
+        /// imageView
         imageView.animates = true
         imageView.imageScaling = NSImageScaling.ScaleProportionallyUpOrDown
         imageView.canDrawSubviewsIntoLayer = true
+        /// syncUI
         syncUI()
+        /// button actions
         type = ViewControllerType(rawValue: self.title!)
         copyButton.action = "copyAction"
         copyButton.target = self
@@ -43,6 +47,10 @@ class ViewController: NSViewController {
         case .Favorites:
             break
         }
+    }
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        view.layer?.backgroundColor = NSColor.whiteColor().CGColor
     }
     override func viewWillDisappear() {
         super.viewWillDisappear()

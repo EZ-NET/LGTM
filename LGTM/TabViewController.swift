@@ -11,6 +11,12 @@ import Cocoa
 class TabViewController: NSTabViewController {
 
     private var monitor: AnyObject!
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        tabView.window?.styleMask = NSTexturedBackgroundWindowMask |
+            (tabView.window?.styleMask)!
+        tabView.window?.backgroundColor = NSColor.whiteColor()
+    }
     override func viewDidAppear() {
         super.viewDidAppear()
         monitor = NSEvent.addLocalMonitorForEventsMatchingMask(NSEventMask.KeyDownMask) {[unowned self] e in
@@ -31,6 +37,9 @@ class TabViewController: NSTabViewController {
             }
             return e
         }
+    }
+    override func viewWillDisappear() {
+        NSEvent.removeMonitor(monitor)
     }
     
 }
