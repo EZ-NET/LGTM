@@ -15,6 +15,7 @@
 		1F4B6F241B8DC8070042CC59 /* LGTMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B6F231B8DC8070042CC59 /* LGTMUITests.swift */; };
 		1F4C80AD1B8DE00700A4CC35 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C80AC1B8DE00700A4CC35 /* Provider.swift */; settings = {ASSET_TAGS = (); }; };
 		1FA05D151B9158BA008EDDC6 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA05D141B9158BA008EDDC6 /* Queue.swift */; settings = {ASSET_TAGS = (); }; };
+		1FAD446D1B929A630091D469 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAD446C1B929A630091D469 /* TabViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		1FD3F1DB1B8F1B92008B286E /* String+WebFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3F1DA1B8F1B92008B286E /* String+WebFormat.swift */; settings = {ASSET_TAGS = (); }; };
 		1FFD89F81B8DE71D00CBF98C /* Async.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFD89F51B8DE67700CBF98C /* Async.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1FFD89FD1B8DF8F600CBF98C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFD89FA1B8DF78D00CBF98C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -68,6 +69,7 @@
 		1F4B6F251B8DC8070042CC59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F4C80AC1B8DE00700A4CC35 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		1FA05D141B9158BA008EDDC6 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		1FAD446C1B929A630091D469 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		1FCE81D81B922CEE00FF8A79 /* LGTM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LGTM.entitlements; sourceTree = "<group>"; };
 		1FD3F1DA1B8F1B92008B286E /* String+WebFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+WebFormat.swift"; sourceTree = "<group>"; };
 		1FFD89F51B8DE67700CBF98C /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = Carthage/Build/Mac/Async.framework; sourceTree = SOURCE_ROOT; };
@@ -131,6 +133,7 @@
 				1FCE81D81B922CEE00FF8A79 /* LGTM.entitlements */,
 				1F4B6F061B8DC8070042CC59 /* AppDelegate.swift */,
 				1F4B6F081B8DC8070042CC59 /* ViewController.swift */,
+				1FAD446C1B929A630091D469 /* TabViewController.swift */,
 				1FD3F1DA1B8F1B92008B286E /* String+WebFormat.swift */,
 				1F4C80AC1B8DE00700A4CC35 /* Provider.swift */,
 				1FA05D141B9158BA008EDDC6 /* Queue.swift */,
@@ -365,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FAD446D1B929A630091D469 /* TabViewController.swift in Sources */,
 				1FD3F1DB1B8F1B92008B286E /* String+WebFormat.swift in Sources */,
 				1FA05D151B9158BA008EDDC6 /* Queue.swift in Sources */,
 				1F4C80AD1B8DE00700A4CC35 /* Provider.swift in Sources */,

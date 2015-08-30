@@ -652,10 +652,14 @@
         <!--Tab View Controller-->
         <scene sceneID="gWc-iK-aPz">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" id="pd1-TN-stl" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" id="pd1-TN-stl" customClass="TabViewController" customModule="LGTM" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem id="dI1-Ay-Bq0"/>
-                        <tabViewItem id="zjq-rd-5MV"/>
+                        <tabViewItem id="dI1-Ay-Bq0" userLabel="lgtm.in">
+                            <accessibility identifier="lgtm.in"/>
+                        </tabViewItem>
+                        <tabViewItem id="zjq-rd-5MV" userLabel="favorites">
+                            <accessibility identifier="favorites"/>
+                        </tabViewItem>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="9nC-X3-KXW">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
