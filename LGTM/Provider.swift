@@ -64,7 +64,7 @@ extension Provider {
     private func fetchLgtmFromServer() {
         fetchFromServer { [unowned self] in
             if self.stack.count < self.StackLimit {
-                // fetch until stack.count reaches to limit
+                // fetch until stack.count reaches StackLimit
                 self.fetchLgtmFromServer()
             } else {
                 self.fetching = false
