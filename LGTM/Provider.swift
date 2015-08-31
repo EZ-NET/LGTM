@@ -42,6 +42,8 @@ extension Provider {
     }
 }
 /// private interfaces
+let queue1 = dispatch_queue_create(nil, DISPATCH_QUEUE_CONCURRENT)
+let queue2 = dispatch_queue_create(nil, DISPATCH_QUEUE_CONCURRENT)
 extension Provider {
     private func popRandomLgtm() -> Lgtm? {
         let lgtm = stack.dequeue()
@@ -52,10 +54,10 @@ extension Provider {
             history.enqueue(lgtm.url)
         }
         /// 2 different threads concurrently
-        Async.background {
+        Async.customQueue(queue1) {
             self.fetchLgtmFromServer()
         }
-        Async.background {
+        Async.customQueue(queue2) {
             self.fetchLgtmFromServer()
         }
         return lgtm
