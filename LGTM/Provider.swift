@@ -175,7 +175,7 @@ class RealmLgtm : Object {
 struct Lgtm {
     let url:String
     let tags:[String]
-    var image:NSImage
+    let image:NSImage
     init(url:String, image:NSImage, tags:[String] = []) {
         self.url = url
         self.image = image
