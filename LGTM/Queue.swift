@@ -5,6 +5,7 @@
 //  Created by toshi0383 on 2015/08/29.
 //  Copyright © 2015年 toshi0383. All rights reserved.
 //
+import Darwin
 
 protocol QueueType {
     typealias Element
@@ -51,4 +52,24 @@ extension Queue: ArrayLiteralConvertible {
         reverse = elements.reverse()
         queue = []
     }
+}
+extension Queue: RangeReplaceableCollectionType {
+    init() {
+        queue = []
+        reverse = []
+    }
+    mutating func replaceRange<C : CollectionType where C.Generator.Element == Queue.Generator.Element>(subRange: Range<Queue.Index>, with newElements: C) {
+    }
+    mutating func reserveCapacity(n: Index.Distance) {
+        queue.reserveCapacity(n <= queue.count ? n : 0)
+        reverse.reserveCapacity(n - queue.count <= reverse.count ? n : 0)
+    }
+}
+func shuffle<T>(array:[T]) -> [T] {
+    var result:[T] = []
+    for i in 1...array.count {
+        let r = Int(arc4random_uniform(UInt32(array.count - i)))
+        result.append(array[r])
+    }
+    return result
 }

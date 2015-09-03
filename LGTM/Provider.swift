@@ -127,11 +127,12 @@ extension Provider {
         let realm = getRealm()
         let results = realm.objects(RealmLgtm).filter {e in true} as [RealmLgtm]
         let urls = results.map{$0.url}
+        let shuffledUrls = shuffle(urls)
         let targetUrls:[String]
         if urls.count > StackLimit {
-            targetUrls = [] + urls[0...(StackLimit - 1)]
+            targetUrls = [] + shuffledUrls[0...(StackLimit - 1)]
         } else {
-            targetUrls = urls
+            targetUrls = shuffledUrls
         }
         for url in targetUrls {
             fetchImage(url) { [unowned self] image in
