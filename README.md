@@ -4,6 +4,9 @@
 # What
 LGTM Mac app for all developers who love to LGTM.
 
+# Support Version
+OS X 10.10(Yosemite) or later
+
 # Why
 Yea I know maybe someone could make a cross-platform one using Electron or something.  
 But I'm a Mac addict, so...
