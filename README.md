@@ -1,3 +1,6 @@
+# LGTM app for OS X
+![LGTMapp](images/LGTMapp.gif)
+
 # What
 LGTM Mac app for all developers who love to LGTM.
 
