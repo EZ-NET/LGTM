@@ -15,10 +15,34 @@ enum ViewControllerType:String {
 
 class ViewController: NSViewController {
 
-    @IBOutlet weak var copyButton: NSButton!
+	@IBOutlet weak var copyButton: NSButton! {
+		
+		didSet {
+			
+			copyButton.action = "copyAction"
+			copyButton.target = self
+		}
+	}
+	
     @IBOutlet weak var loveButton: NSButton!
-    @IBOutlet weak var textField: NSTextField!
-    @IBOutlet weak var imageView: NSImageView!
+	@IBOutlet weak var textField: NSTextField! {
+		
+		didSet {
+			
+			textField.preferredMaxLayoutWidth = 270
+		}
+	}
+	
+	@IBOutlet weak var imageView: NSImageView! {
+		
+		didSet {
+			
+			imageView.animates = true
+			imageView.imageScaling = NSImageScaling.ScaleProportionallyUpOrDown
+			imageView.canDrawSubviewsIntoLayer = true
+		}
+	}
+	
     private var monitor: AnyObject!
     private var lgtm:Lgtm? {
         didSet {
@@ -28,18 +52,10 @@ class ViewController: NSViewController {
     internal var type:ViewControllerType!
     override func viewDidLoad() {
         super.viewDidLoad()
-        /// textField
-        textField.preferredMaxLayoutWidth = 270
-        /// imageView
-        imageView.animates = true
-        imageView.imageScaling = NSImageScaling.ScaleProportionallyUpOrDown
-        imageView.canDrawSubviewsIntoLayer = true
         /// syncUI
         syncUI()
         /// button actions
         type = ViewControllerType(rawValue: self.title!)
-        copyButton.action = "copyAction"
-        copyButton.target = self
         switch type! {
         case .Lgtmin:
             loveButton.action = "favoriteAction"
