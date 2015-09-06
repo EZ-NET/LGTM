@@ -66,6 +66,11 @@ extension Queue: RangeReplaceableCollectionType {
     }
 }
 func shuffle<T>(array:[T]) -> [T] {
+
+    guard !array.isEmpty else {
+        return []
+    }
+    
     var result:[T] = []
     for i in 1...array.count {
         let r = Int(arc4random_uniform(UInt32(array.count - i)))
