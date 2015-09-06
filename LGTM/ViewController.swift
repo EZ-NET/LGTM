@@ -37,7 +37,7 @@ class ViewController: NSViewController {
         /// syncUI
         syncUI()
         /// button actions
-        type = ViewControllerType(rawValue: self.title!)
+        type = ViewControllerType(rawValue: self.title!)!
         copyButton.action = "copyAction"
         copyButton.target = self
         switch type! {
