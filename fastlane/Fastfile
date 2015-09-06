@@ -21,7 +21,6 @@ fastlane_version "1.23.0"
 
 default_platform :mac
 
-
 platform :mac do
 
   before_all do
@@ -49,12 +48,9 @@ platform :mac do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
-    snapshot
-    sigh
-    deliver(beta: true)
-
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+#    snapshot
+#    sigh
+#    deliver(beta: true)
   end
 
   desc "Deploy a new version to the App Store"
